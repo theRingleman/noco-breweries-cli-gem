@@ -1,5 +1,2 @@
-require "noco_breweries/version"
-
-module NocoBreweries
-  # Your code goes here...
-end
+require_relative "noco_breweries/version"
+require_relative "./noco_breweries/cli"

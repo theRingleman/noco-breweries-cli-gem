@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "./lib/noco_breweries"
+
+NocoBreweries::CLI.new.call
