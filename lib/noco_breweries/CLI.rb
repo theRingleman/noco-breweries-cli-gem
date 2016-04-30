@@ -23,6 +23,14 @@ class NocoBreweries::CLI
   def menu
     puts "Please choose a town and we will provide you with a list of breweries!"
     input = gets.strip.downcase
+    while input != "exit" 
+      cities_case(input)
+      list_towns
+      input = gets.strip.downcase
+    end
+  end
+
+  def cities_case(input)
     case input
     when "loveland"
       puts "Big Beaver Brewing"
@@ -37,8 +45,7 @@ class NocoBreweries::CLI
     when "estes park"
       puts "Rock Cut Brewing Company"
     else
-      puts "Sorry but please select from a list of the following towns"
-      list_towns
+      puts "Sorry but please select from a list of the following towns, or type in exit to quit the program."
     end
   end
 
