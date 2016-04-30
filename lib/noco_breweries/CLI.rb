@@ -4,30 +4,19 @@ class NocoBreweries::CLI
 
   def call
     puts "Welcome to Northern Colorado Brewies!"
-    list_towns
     menu
-  end
-
-  def list_towns
-    # This will eventually be scraped from http://coloradofrontrange.com/
-    towns = ["Fort Collins", "Loveland", "Boulder", "Estes Park", "Greeley", "Longmont"]
-    towns.sort.each_with_index do |town, index|
-      if index == towns.length - 1
-        print " #{town}\n"
-      else
-        print "#{town} - "
-      end
-    end
   end
 
   def menu
     # TODO there needs to be a prompt that tells the user what their options are every time. At least make it more clear
     # TODO also make sure to add in a goodbye when the user types exit
-    puts "Please choose a town and we will provide you with a list of breweries!"
+    greeting = "Please choose a town and we will provide you with a list of breweries or type exit."
+    puts greeting
+    NocoBreweries::Town.list_towns
     input = gets.strip.downcase
     while input != "exit"
       cities_case(input)
-      list_towns
+      NocoBreweries::Town.list_towns
       input = gets.strip.downcase
     end
   end
