@@ -17,3 +17,14 @@
 6. Start making things real
 7. Discover Objects
 8. Program!!!!!!!!!!!!!!!!!!!!!!!! While listening to glitchmob and drinking FCB - Fort Collins Brewery
+
+What is a brewery?
+  A brewery has a name
+  A brewery has a menu
+  A brewery has a URL
+  A brewery has a town
+  A brewery has a phone number
+
+What is a town?
+  A town has a name
+  A town has multiple breweries

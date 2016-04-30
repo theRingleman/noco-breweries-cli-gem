@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 class NocoBreweries::CLI
 
@@ -21,9 +21,11 @@ class NocoBreweries::CLI
   end
 
   def menu
+    # TODO there needs to be a prompt that tells the user what their options are every time. At least make it more clear
+    # TODO also make sure to add in a goodbye when the user types exit
     puts "Please choose a town and we will provide you with a list of breweries!"
     input = gets.strip.downcase
-    while input != "exit" 
+    while input != "exit"
       cities_case(input)
       list_towns
       input = gets.strip.downcase
