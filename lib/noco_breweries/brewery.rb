@@ -2,7 +2,7 @@ require 'pry'
 
 class NocoBreweries::Brewery
 
-  attr_accessor :name, :town, :description, :menu, :hours, :address, :phone_number, :website
+  attr_accessor :name, :town, :description, :menu, :hours, :address, :phone_number, :website, :foco_brewery_guide_url
 
   @@all = []
 
@@ -10,7 +10,8 @@ class NocoBreweries::Brewery
     @@all
   end
 
-  def initialize
+  def initialize(name)
+    @name = name
     @@all << self
   end
 

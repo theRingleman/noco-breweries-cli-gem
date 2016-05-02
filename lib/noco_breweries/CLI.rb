@@ -4,6 +4,7 @@ class NocoBreweries::CLI
 
   def call
     puts "Welcome to Northern Colorado Brewies!"
+    scrape
     menu
   end
 
@@ -21,6 +22,10 @@ class NocoBreweries::CLI
     end
   end
 
+  def scrape
+    NocoBreweries::Scraper.new.class.scrape_towns
+  end
+
   def cities_case(input)
     case input
     when "loveland"
@@ -35,6 +40,8 @@ class NocoBreweries::CLI
       puts "Upslope Brewing Company"
     when "estes park"
       puts "Rock Cut Brewing Company"
+    when "exit"
+      puts "Thanks for checking out the Northern Colorado Brewing Scene! Have a great day!"
     else
       puts "Sorry but please select from a list of the following towns, or type in exit to quit the program."
     end

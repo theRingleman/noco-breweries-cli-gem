@@ -17,11 +17,11 @@ class NocoBreweries::Town
   end
 
   def self.list_towns
-    @@all.sort.each_with_index do |town, index|
+    @@all.each_with_index do |town, index|
       if index == @@all.length - 1
-        print " #{town}\n"
+        print " #{town.name}\n"
       else
-        print "#{town} - "
+        print "#{town.name} - "
       end
     end
   end
