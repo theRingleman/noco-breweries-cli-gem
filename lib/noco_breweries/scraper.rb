@@ -23,11 +23,9 @@ class NocoBreweries::Scraper
   def self.scrape_breweries
     # brewery name: site.css("a h3").text.strip
     # brewery foco site url: site.css("td.content a") also you have to add fortcollinsbreweryguide.com/ and then the site
-    site.css("a h3").each do |name|
-      brewery = NocoBreweries::Brewery.new(name.text.strip)
-      site.css("td.content a").each do |url|
-        brewery.foco_brewery_guide_url = "http://fortcollinsbreweryguide.com/#{url.attribute("href").value}"
-      end
+    site.css("td.content").each do |name|
+      brewery = NocoBreweries::Brewery.new(name.css("a h3").text.strip)
+      brewery.foco_brewery_guide_url = "http://fortcollinsbreweryguide.com/#{name.css("a").attribute("href").value}"
     end
   end
 
