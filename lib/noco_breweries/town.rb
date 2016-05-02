@@ -1,15 +1,15 @@
-# require "pry"
+require "pry"
 
 class NocoBreweries::Town
 
-  @@towns = ["Fort Collins", "Loveland", "Boulder", "Estes Park", "Greeley", "Longmont"]
+  @@all = ["Fort Collins", "Loveland", "Boulder", "Estes Park", "Greeley", "Longmont"]
 
   attr_accessor :name, :breweries
 
   def initialize(name)
     @name = name
     @breweries = []
-    @@towns << self
+    @@all << self
   end
 
   def self.list_towns
