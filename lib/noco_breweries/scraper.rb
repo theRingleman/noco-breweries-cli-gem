@@ -29,9 +29,18 @@ class NocoBreweries::Scraper
     end
   end
 
-  def scrape_details #this might take in a brewery object as an argument
+  def self.scrape_details #this will take in a brewery object as an argument
     # I might also have the cli call this method after the user has selected a brewery to then populate the details.
     # This is going to scrape the individual brewery site on fortcollinsbreweryguide.com
+    # Nokogiri::HTML(open(brewery.foco_brewery_guide_url)) this is what it will look like
+    doc = Nokogiri::HTML(open("http://fortcollinsbreweryguide.com/Brewery/Odell-Brewing-Company.aspx"))
+    # brewery_info = doc.css("td.content").text.split(/\r\n/)
+    # brewery description: brewery_info[0].strip
+    # menu: brewery_info[1].strip
+    # website: brewery_info.find {|item| item.include?("www")}.strip
+    # phone_number: brewery_info.find {|item| item.include?("970")}.strip
+    # address: 
+    binding.pry
   end
 
 end

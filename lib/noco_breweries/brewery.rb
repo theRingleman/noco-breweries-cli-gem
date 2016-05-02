@@ -2,7 +2,7 @@ require 'pry'
 
 class NocoBreweries::Brewery
 
-  attr_accessor :name, :town, :description, :menu, :hours, :address, :phone_number, :website, :foco_brewery_guide_url
+  attr_accessor :name, :town, :description, :menu, :address, :phone_number, :website, :foco_brewery_guide_url
 
   @@all = []
 
