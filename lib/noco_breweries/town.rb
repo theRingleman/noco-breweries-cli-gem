@@ -2,7 +2,7 @@ require "pry"
 
 class NocoBreweries::Town
 
-  @@all = ["Fort Collins", "Loveland", "Boulder", "Estes Park", "Greeley", "Longmont"]
+  @@all = []
 
   attr_accessor :name, :breweries
 
@@ -12,9 +12,13 @@ class NocoBreweries::Town
     @@all << self
   end
 
+  def self.all
+    @@all
+  end
+
   def self.list_towns
-    @@towns.sort.each_with_index do |town, index|
-      if index == @@towns.length - 1
+    @@all.sort.each_with_index do |town, index|
+      if index == @@all.length - 1
         print " #{town}\n"
       else
         print "#{town} - "

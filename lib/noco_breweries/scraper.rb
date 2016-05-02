@@ -16,17 +16,20 @@ class NocoBreweries::Scraper
     greeley = doc.css("#ctl00_MainContent_LocationsRepeater_ctl04_CityLabel").text
     loveland = doc.css("#ctl00_MainContent_LocationsRepeater_ctl06_CityLabel").text
     windsor = doc.css("#ctl00_MainContent_LocationsRepeater_ctl08_CityLabel").text
+    towns = [fort_collins, greeley, loveland, windsor, berthoud]
+    towns.each {|town| NocoBreweries::Town.new(town)}
+    binding.pry
   end
 
   def self.scrape_breweries
     # brewery name: site.css("a h3").text.strip
     # brewery foco site url: site.css("td.content a") also you have to add fortcollinsbreweryguide.com/ and then the site
 
-    binding.pry
   end
 
   def scrape_details #this might take in a brewery object as an argument
-    
+    # I might also have the cli call this method after the user has selected a brewery to then populate the details.
+    # This is going to scrape the individual brewery site on fortcollinsbreweryguide.com
   end
 
 end

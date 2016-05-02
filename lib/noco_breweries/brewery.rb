@@ -2,16 +2,16 @@ require 'pry'
 
 class NocoBreweries::Brewery
 
-  attr_accessor :name, :town
+  attr_accessor :name, :town, :description, :menu, :hours, :address, :phone_number, :website
 
-  @@all = ["Big Beaver Brewing", "Equinox Brewing", "Weldwerks Brewing Company", "Left Hand Brewing Company", "Upslope Brewing Company", "Rock Cut Brewing Company"]
+  @@all = []
 
   def self.all
     @@all
   end
 
   def initialize
-
+    @@all << self
   end
 
 end
