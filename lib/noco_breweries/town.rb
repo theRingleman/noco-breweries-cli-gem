@@ -27,7 +27,15 @@ class NocoBreweries::Town
   end
 
   def self.find_or_create_by_name(name)
-    @@all.find {|town| town.include?(name)} || self.new(name)
+    @@all.find {|town| town.name.include?(name)} || self.new(name)
+  end
+
+  def self.find_by_name(name)
+    @@all.find {|town| town.name.downcase.include?(name)}
+  end
+
+  def list_breweries
+    @breweries.each_with_index {|brewery, index| puts "#{index + 1}: #{brewery.name}"}
   end
 
 end

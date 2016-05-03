@@ -1,9 +1,9 @@
-# require "pry"
+require "launchy"
 
 class NocoBreweries::CLI
 
   def call
-    puts "Welcome to Northern Colorado Brewies!"
+    puts "Welcome to Northern Colorado Breweries!"
     scrape
     menu
   end
@@ -16,8 +16,37 @@ class NocoBreweries::CLI
     NocoBreweries::Town.list_towns
     input = gets.strip.downcase
     while input != "exit"
-      cities_case(input)
-      NocoBreweries::Town.list_towns
+      if NocoBreweries::Town.find_by_name(input)
+        town = NocoBreweries::Town.find_by_name(input)
+        town.list_breweries
+        puts "Please select a brewery by name or type back to go back to the town selection."
+        selection = gets.strip.downcase
+        while selection != "back"
+          if NocoBreweries::Brewery.find_by_name(selection)
+            brewery = NocoBreweries::Brewery.find_by_name(selection)
+            puts brewery.description
+            puts brewery.menu
+            puts brewery.address
+            puts brewery.phone_number
+            puts brewery.website
+            puts "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
+            selection = gets.strip
+          elsif selection == "open"
+            Launchy.open(brewery.website)
+            puts "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
+            selection = gets.strip
+          else
+            puts "Please type in a valid brewery or type \"back\" to go back to the town selection"
+            town.list_breweries
+            selection = gets.strip
+          end
+        end
+        NocoBreweries::Town.list_towns
+        puts "Please choose a town and we will provide you with a list of breweries or type exit."
+        NocoBreweries::Brewery.find_by_name(input)
+      else
+        puts "Sorry, please enter a town or type exit to quit."
+      end
       input = gets.strip.downcase
     end
   end
@@ -25,25 +54,7 @@ class NocoBreweries::CLI
   def scrape
     NocoBreweries::Scraper.scrape_towns
     NocoBreweries::Scraper.scrape_breweries
-  end
-
-  def cities_case(input)
-    case input
-    when "loveland"
-      puts "Big Beaver Brewing"
-    when "fort collins"
-      puts "Equinox Brewing"
-    when "greeley"
-      puts "Weldwerks Brewing Company"
-    when "longmont"
-      puts "Left Hand Brewing Company"
-    when "boulder"
-      puts "Upslope Brewing Company"
-    when "exit"
-      puts "Thanks for checking out the Northern Colorado Brewing Scene! Have a great day!"
-    else
-      puts "Sorry but please select from a list of the following towns, or type in exit to quit the program."
-    end
+    NocoBreweries::Scraper.scrape_details
   end
 
 end

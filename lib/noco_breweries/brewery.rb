@@ -16,11 +16,11 @@ class NocoBreweries::Brewery
   end
 
   def self.find_by_name(name)
-    self.all.detect {|brewery| brewery.name == name}
+    self.all.detect {|brewery| brewery.name.downcase == name}
   end
 
   def self.list_all
-    self.all.each {|brewery| puts brewery.name}
+    self.all.each_with_index {|brewery, index| puts "#{index}: #{brewery}"}
   end
 
 end
