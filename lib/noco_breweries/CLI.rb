@@ -23,7 +23,8 @@ class NocoBreweries::CLI
   end
 
   def scrape
-    NocoBreweries::Scraper.new.class.scrape_towns
+    NocoBreweries::Scraper.scrape_towns
+    NocoBreweries::Scraper.scrape_breweries
   end
 
   def cities_case(input)
