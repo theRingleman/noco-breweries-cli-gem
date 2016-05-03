@@ -38,8 +38,6 @@ class NocoBreweries::CLI
       puts "Left Hand Brewing Company"
     when "boulder"
       puts "Upslope Brewing Company"
-    when "estes park"
-      puts "Rock Cut Brewing Company"
     when "exit"
       puts "Thanks for checking out the Northern Colorado Brewing Scene! Have a great day!"
     else

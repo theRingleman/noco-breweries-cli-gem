@@ -19,4 +19,8 @@ class NocoBreweries::Brewery
     self.all.detect {|brewery| brewery.name == name}
   end
 
+  def self.list_all
+    self.all.each {|brewery| puts brewery.name}
+  end
+
 end

@@ -26,4 +26,8 @@ class NocoBreweries::Town
     end
   end
 
+  def self.find_or_create_by_name(name)
+    # @@all.find {|town| town.include?(name)} || self.new(name)
+  end
+
 end
