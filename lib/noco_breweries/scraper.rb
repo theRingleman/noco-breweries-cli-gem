@@ -30,7 +30,8 @@ class NocoBreweries::Scraper
     end
   end
 
-  def self.scrape_details #this will take in a brewery object as an argument
+  def self.scrape_details #Nope this is going to have to take in an array of all the breweries to assign the towns to it. I would much rather set the town via the info online.
+    # TODO See if I can find a way to scrape the town from the primary breweries site.
     # TODO I might also have the cli call this method after the user has selected a brewery to then populate the details.
     # This is going to scrape the individual brewery site on fortcollinsbreweryguide.com
     # Nokogiri::HTML(open(brewery.foco_brewery_guide_url)) this is what it will look like
