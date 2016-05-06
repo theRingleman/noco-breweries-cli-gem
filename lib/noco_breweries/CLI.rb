@@ -11,8 +11,7 @@ class NocoBreweries::CLI
   def menu
     # TODO there needs to be a prompt that tells the user what their options are every time. At least make it more clear
     # TODO also make sure to add in a goodbye when the user types exit
-    greeting = "Please choose a town and we will provide you with a list of breweries or type exit."
-    puts greeting
+    puts "Please choose a town and we will provide you with a list of breweries or type exit."
     NocoBreweries::Town.list_towns
     input = gets.strip.downcase
     while input != "exit"
@@ -23,12 +22,8 @@ class NocoBreweries::CLI
         selection = gets.strip.downcase
         while selection != "back"
           if NocoBreweries::Brewery.find_by_name(selection)
-            brewery = NocoBreweries::Brewery.find_by_name(selection)
-            puts brewery.description
-            puts brewery.menu
-            puts brewery.address
-            puts brewery.phone_number
-            puts brewery.website
+            @brewery = NocoBreweries::Brewery.find_by_name(selection)
+            print_brewery_info
             puts "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
             selection = gets.strip
           elsif selection == "open"
@@ -55,6 +50,14 @@ class NocoBreweries::CLI
     NocoBreweries::Scraper.scrape_towns
     NocoBreweries::Scraper.scrape_breweries
     NocoBreweries::Scraper.scrape_details
+  end
+
+  def print_brewery_info
+    puts @brewery.description
+    puts @brewery.menu
+    puts @brewery.address
+    puts @brewery.phone_number
+    puts @brewery.website
   end
 
 end
