@@ -14,6 +14,7 @@ class NocoBreweries::CLI
     puts "Please choose a town and we will provide you with a list of breweries or type exit."
     NocoBreweries::Town.list_towns
     input = gets.strip.downcase
+    brewery_selection = "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
     while input != "exit"
       if NocoBreweries::Town.find_by_name(input)
         town = NocoBreweries::Town.find_by_name(input)
@@ -24,11 +25,11 @@ class NocoBreweries::CLI
           if NocoBreweries::Brewery.find_by_name(selection)
             @brewery = NocoBreweries::Brewery.find_by_name(selection)
             print_brewery_info
-            puts "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
+            puts brewery_selection
             selection = gets.strip
           elsif selection == "open"
             Launchy.open(brewery.website)
-            puts "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
+            puts brewery_selection
             selection = gets.strip
           else
             puts "Please type in a valid brewery or type \"back\" to go back to the town selection"
