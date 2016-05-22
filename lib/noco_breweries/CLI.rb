@@ -12,7 +12,7 @@ class NocoBreweries::CLI
     puts "Please choose a town and we will provide you with a list of breweries or type exit."
     NocoBreweries::Town.list_towns
     input = gets.strip.downcase
-    brewery_selection = "Please select another brewery or type open to view this breweries website or type back to go back to the towns."
+    brewery_selection = "Please select another brewery, or type open to view this breweries website, or type back to go back to the towns."
     while input != "exit"
       if NocoBreweries::Town.find_by_name(input)
         town = NocoBreweries::Town.find_by_name(input)
