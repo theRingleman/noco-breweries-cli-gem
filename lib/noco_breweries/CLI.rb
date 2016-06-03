@@ -26,7 +26,7 @@ class NocoBreweries::CLI
             puts brewery_selection
             selection = gets.strip
           elsif selection == "open"
-            Launchy.open(brewery.website)
+            Launchy.open(@brewery.website)
             puts brewery_selection
             selection = gets.strip
           else
