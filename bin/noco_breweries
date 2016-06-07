@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "noco_breweries"
+require_relative "../lib/noco_breweries"
 
 NocoBreweries::CLI.new.call
